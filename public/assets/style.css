@@ -1,0 +1,27 @@
+html,body{
+    height: 100%;
+}
+/* home page */
+.home{
+    margin: 2%;
+}
+/* register page */
+.container{
+    margin: 5%;
+}
+.fullinput{
+    width: 30vw;
+}
+.submit__btn{
+    border: 1px solid rgb(201, 201, 201);
+    background-color: #eee;
+    padding: 3px 10px;
+}
+
+/* the userslist  */
+.icon{
+    background-color: #fff;
+    padding: 5px;
+    border: none;
+    text-decoration: #fff;
+}
