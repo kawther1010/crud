@@ -10,7 +10,6 @@
         <%- include('include/header') -%>
         <br>
         <div class="home">
-            <form method="post" action="/userslist/<%=user._id%>">
                 <th scope="row"><%= user.id %></th><br>
                 <input type="hidden" name="id" value=<%= user.id %> >
                 <td> <%= user.fullName %> </td><br>
@@ -18,7 +17,6 @@
                 <td> <%= user.mobile %> </td><br>
                 <td><%= user.city %> </td><br><br>
                 <button class="submit__btn" type="submit">delete</button>
-            </form>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
