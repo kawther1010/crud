@@ -10,7 +10,7 @@
         <%- include('include/header') -%>
         <br>
         <div class="home">
-            <form method="post" action="/userslist/<%=user._id%>">
+            <form action="/userslist/<%=user._id%>" method="post">
                 <th scope="row"><%= user.id %></th><br>
                 <input type="hidden" name="id" value=<%= user.id %> >
                 <td> <%= user.fullName %> </td><br>

@@ -18,8 +18,9 @@ const postregister = (req , res , next) => {
     user.city = req.body.city;
     user.save((err, doc) => {
         if (!err){
-            res.redirect('userslist');
-            console.log(req.body);
+            //res.redirect('userslist');
+            res.send('done');
+            console.log('done!');
         } else {
             res.render('error');
             console.log('Error during record insertion : ' + err);
@@ -35,39 +36,53 @@ const getuserslist = (req, res) => {
 }
 
 const getuser = (req, res) =>{
-    User.findById(req.params.id, function(err, Result){
+    User.findById(req.params.id.trim(), function(err, Result){
         if(err){
             console.log(err);
         } else {
-            res.send(Result);
-            console.log(Result);
+            res.render('show', {
+                user: Result,
+            });
         }
     });
 }
 
+const getedit = (req, res) =>{
+    User.findById(req.params.id.trim(), function(err, Result){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('edit', {
+                user: Result,
+            });
+        }
+    }); 
+}
 
-/*
-router.put("/:id", async (req, res) => {
-    try {
-        const task = await Task.findOneAndUpdate(
-            { _id: req.params.id },
-            req.body
-        );
-        res.send(task);
-    } catch (error) {
-        res.send(error);
-    }
-});
+//{ useFindAndModify: false}
+const updateuser = (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body, (err) => {
+        if(err){
+            res.render('error');
+            console.log('Error:' +err);
+        } else {
+            res.render('home');
+        }
+    });
+}
 
-router.delete("/:id", async (req, res) => {
-    try {
-        const task = await Task.findByIdAndDelete(req.params.id);
-        res.send(task);
-    } catch (error) {
-        res.send(error);
-    }
-});
-*/
+const deleteuser = (req, res) => {
+    User.findByIdAndDelete(req.params.id , (err) => {
+        if(err){
+            res.render('error');
+            console.log('Error:' +err);
+        } else {
+            //res.render('home');
+            res.send('done');
+            console.log('done!');
+        }
+    });
+}
 
 module.exports = {
     gethome,
@@ -75,4 +90,7 @@ module.exports = {
     postregister,
     getuserslist,
     getuser,
+    getedit,
+    updateuser,
+    deleteuser,
 };
