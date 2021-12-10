@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const uri = "mongodb://127.0.0.1:27017/crud";
+const uri = the second database account of ur mama;
 
 mongoose.connect( uri , { useNewUrlParser: true }, (err) => {
     if (!err){
